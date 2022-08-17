@@ -10,7 +10,7 @@ int user_input(){
     return size;
 }
 
-void show_matrix(int size, int matrix[size][size], char name[]){
+void show_matrix(int size, int **matrix, char name[]){
     printf("Showing %s \n",name);
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
@@ -21,27 +21,32 @@ void show_matrix(int size, int matrix[size][size], char name[]){
     printf("\n");
 }
 
+
+void fill_matrix(int size, int **matrix){
+  for (int row = 0; row < size; row++) {
+        for (int col = 0; col < size; col++){
+            matrix[col][row] = rand()%100;
+        }
+    }  
+}
+
 int main(void) {
     int size = user_input();
-    int matrix_a[size][size],matrix_b[size][size],result[size][size];
-    
-    memset(matrix_a,0,sizeof(matrix_a));
-    for (int row = 0; row < size; row++) {
-        for (int col = 0; col < size; col++){
-            matrix_a[col][row] = rand()%100;
-        }
+    int **result,**matrix_a,**matrix_b;
+    matrix_a = (int**)malloc(size*sizeof(int*));
+    for (int index=0;index<size;++index){
+        matrix_a[index] = (int*)malloc(size * sizeof(int));
     }
-    show_matrix(size,matrix_a,"A");
-
-    memset(matrix_b,0,sizeof(matrix_b));
-    for (int row = 0; row < size; row++) {
-        for (int col = 0; col < size; col++){
-            matrix_b[col][row] = rand()%100;
-        }
+    fill_matrix(size,matrix_a);
+    matrix_b = (int**)malloc(size*sizeof(int*));
+    for (int index=0;index<size;++index){
+        matrix_b[index] = (int*)malloc(size * sizeof(int));
     }
-    show_matrix(size,matrix_b,"B");
-
-    memset(result,0,sizeof(result));
+    fill_matrix(size,matrix_b);
+    result = (int**)malloc(size*sizeof(int*));
+    for (int index=0;index<size;++index){
+        result[index] = (int*)malloc(size * sizeof(int));
+    }
     for (int a = 0; a < size; a++) {
         for (int i = 0; i < size; i++) {
             int suma = 0;
