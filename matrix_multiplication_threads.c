@@ -23,7 +23,7 @@ void *multiply_matrix(void *threadid)
     end_col = data->end_col;
     id = data->thread_id;
     for (int a = 0; a < end_col; a++) {
-        for (int i = 0; i < end_row; i++) {
+        for (int i = start_row; i < end_row; i++) {
             long suma = 0;
             for (int j = 0; j < end_col; j++) {
                 suma += matrix_a[i][j] * matrix_b[j][a];
@@ -63,7 +63,7 @@ void show_matrix(int size, long **matrix, char name[]){
 void main(int argc, char *argv[])
 {
     int rc,size,n_threads,actual_block = 0;
-    scanf(argv[2],"%d",&n_threads);
+    n_threads = 16;
     sscanf(argv[1], "%d", &size);
     pthread_t threads[n_threads];
     void *status;

@@ -10,6 +10,6 @@ do
 for i in 1000 1500 2000 2500 5000 6000 7000 8000 10000
 do
 echo "running threads $j"
-./threads $i $j >> $j.txt 
+./$j $i >> $j.txt 
 done
 done
