@@ -49,21 +49,11 @@ void assign_memory_to_matrix(int size, long **matrix){
     }
 }
 
-void show_matrix(int size, long **matrix, char name[]){
-    printf("Showing %s \n", name);
-    for (int i = 0; i < size; i++){
-        for (int j = 0; j < size; j++){
-            printf("%ld\t", matrix[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
 
 void main(int argc, char *argv[])
 {
     int rc,size,n_threads,actual_block = 0;
-    n_threads = 16;
+    n_threads = 2;
     sscanf(argv[1], "%d", &size);
     pthread_t threads[n_threads];
     void *status;
@@ -91,6 +81,7 @@ void main(int argc, char *argv[])
             data.end_row = actual_block + charge_by_thread;
         }
         actual_block = actual_block + charge_by_thread;
+        printf("creando el hilo %d con inicio en la fila %d hasta %d \n",t, data.start_row,data.end_row);
         rc = pthread_create(&threads[t], NULL, multiply_matrix, (void *)&data);
         if (rc)
         {
