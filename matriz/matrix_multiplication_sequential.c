@@ -58,6 +58,6 @@ int main(int argc, char *argv[]){
         }
     }
     end = clock();
-    cpu_time_used = end -start;
+    cpu_time_used = (end -start)/CLOCKS_PER_SEC;;
     printf("%lf\n",cpu_time_used);
 }
