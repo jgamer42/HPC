@@ -98,6 +98,6 @@ void main(int argc, char *argv[])
     }
     end = clock();
     cpu_time_used = end -start;
-    printf("%lf\n",cpu_time_used);
+    printf("%lf segundos\n",cpu_time_used);
     pthread_exit(NULL);
 }
