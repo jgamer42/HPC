@@ -6,7 +6,6 @@ do
     do
         for i in 1000 2000 2500 5000 6000
         do
-            echo "$algorithm $k $i"
             echo -n "$k,$i," >> datos.csv
             ./$algorithm $i >> datos.csv
             echo -n ",$algorithm" >> datos.csv
