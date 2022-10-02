@@ -3,19 +3,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-void show_matrix(int size, long **matrix, char name[])
-{
-    printf("Showing %s \n", name);
-    for (int i = 0; i < size; i++)
-    {
-        for (int j = 0; j < size; j++)
-        {
-            printf("%ld\t", matrix[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
 
 void fill_matrix(int size, long **matrix)
 {
@@ -72,5 +59,5 @@ int main(int argc, char *argv[])
     end = clock();
     cpu_time_used = (end - start) / CLOCKS_PER_SEC;
     ;
-    printf("%lf segundos\n", cpu_time_used);
+    printf("%lf segundos", cpu_time_used);
 }

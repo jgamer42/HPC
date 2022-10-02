@@ -1,13 +1,16 @@
 #! /bin/bash
-for k in {4..10}
+echo "iteration,size,time,algorithm" >> datos.csv
+for algorithm in cache_line optimization_1 optimization_2 optimization_3 optimization_4 optimization_5
 do
-    for i in 1000 2000 2500 5000 6000
+    for k in 1 2 3 4 5 6 7 8 9 10
     do
-        for j in 2 4 6 8 16
+        for i in 1000 2000 2500 5000 6000
         do
-            echo "iteracion $k procesos $i con $j"
-            echo "iteration $k $i $j" >> process.txt
-            ./process $i $j >> process.txt
+            echo "$algorithm $k $i"
+            echo -n "$k,$i," >> datos.csv
+            ./$algorithm $i >> datos.csv
+            echo -n ",$algorithm" >> datos.csv
+            echo -e "" >> datos.csv
         done
     done
 done
