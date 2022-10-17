@@ -6,7 +6,7 @@ do
     do
         for i in 1000 2000 2500 5000 6000
         do
-            echo -n "$k,$i,$threads" >> datos.csv
+            echo -n "$k,$i,$threads," >> datos.csv
             ./openmp $i $thread>> datos.csv
         done
     done
