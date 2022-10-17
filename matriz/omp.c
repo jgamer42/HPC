@@ -5,7 +5,7 @@
 #include <omp.h>
 long **result, **matrix_a, **matrix_b;
 int global_size;
-int num_of_threads = 4;
+int num_of_threads;
 void fill_matrix(int size, long **matrix){
     for (int row = 0; row < size; row++){
         for (int col = 0; col < size; col++){
@@ -50,6 +50,7 @@ void multi(int size, long **matrix_a, long **matrix_b, long **result){
 int main(int argc, char *argv[]){
 
     sscanf(argv[1], "%d", &global_size);
+    sscanf(argv[2], "%d", &num_of_threads);
     time_t t;
     srand((unsigned)time(&t));
 
